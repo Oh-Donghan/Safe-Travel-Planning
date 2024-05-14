@@ -5,8 +5,8 @@ function TravelAlarmLogger() {
   const [continentName, setContinentName] = useState('');
   const [allData, setAllData] = useState([]);
 
-  const handleInputChange = (event) => {
-    setContinentName(event.target.value);
+  const handleInputChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setContinentName(e.target.value);
   };
 
   // 모든 데이터를 컴포넌트가 마운트될 때 가져와 콘솔에 출력합니다.
@@ -35,8 +35,8 @@ function TravelAlarmLogger() {
         // 모든 데이터를 콘솔에 출력하고 상태로 저장합니다.
         console.log('All Data:', accumulatedData);
         setAllData(accumulatedData);
-      } catch (err) {
-        console.error('Error fetching travel alarms:', err.message);
+      } catch (e) {
+        console.log('Error fetching travel alarms:', e);
       }
     };
 
