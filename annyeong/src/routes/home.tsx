@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import { countriesList, countriesState, CountryData } from '../store/countries';
+import { styled } from 'styled-components';
 
 export default function Home() {
   const countriesLoadable = useRecoilValueLoadable(countriesList);
@@ -11,7 +11,7 @@ export default function Home() {
 
   const [inputValue, setInputValue] = useState('');
   const [filteredCountries, setFilteredCountries] = useState<CountryData[]>([]);
-  const [isValidSelection, setIsValidSelection] = useState(false);  // 유효한 선택인지 추적하는 상태 추가
+  const [isValidSelection, setIsValidSelection] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function Home() {
           item.country_eng_nm.toLowerCase().includes(inputValue.toLowerCase())
       );
       setFilteredCountries(filtered);
-      setIsValidSelection(false);  // 새로운 입력이 있을 때 유효성 초기화
+      setIsValidSelection(false);
     } else {
       setFilteredCountries([]);
       setIsValidSelection(false);
@@ -37,19 +37,25 @@ export default function Home() {
 
   const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
-    setIsValidSelection(false);  // 입력이 변경되면 유효성 재설정
+    setIsValidSelection(false);
   };
 
-  const handleItemClick = (countryName: string) => {
+  const handleItemClick = (countryName: string, countryEngName: string) => {
     setInputValue(countryName);
     setFilteredCountries([]);
-    setIsValidSelection(true);  // 사용자가 목록에서 선택을 했으므로 유효한 선택으로 설정
+    setIsValidSelection(true);
+    navigate(`/country/${encodeURIComponent(countryEngName.toLowerCase())}`);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isValidSelection && inputValue.trim()) {
-      navigate(`/country/${encodeURIComponent(inputValue)}`);
+      const selectedCountry = countries.find(
+        (country) => country.country_nm === inputValue
+      );
+      if (selectedCountry) {
+        navigate(`/country/${encodeURIComponent(selectedCountry.country_eng_nm.toLowerCase())}`);
+      }
     }
   };
 
@@ -60,8 +66,8 @@ export default function Home() {
         <Input
           onChange={handleInputValue}
           value={inputValue}
-          placeholder='원하는 나라를 검색하세요.'
-          className='dark:bg-my-bg bg-my-text dark:text-my-text text-my-bg'
+          placeholder="원하는 나라를 검색하세요."
+          className="dark:bg-my-bg bg-my-text dark:text-my-text text-my-bg"
           required
         />
         {filteredCountries.length > 0 && (
@@ -69,7 +75,7 @@ export default function Home() {
             {filteredCountries.map((country) => (
               <DropdownItem
                 key={country.country_nm}
-                onClick={() => handleItemClick(country.country_nm)}
+                onClick={() => handleItemClick(country.country_nm, country.country_eng_nm)}
               >
                 {country.country_nm} ({country.country_eng_nm})
               </DropdownItem>
@@ -77,9 +83,9 @@ export default function Home() {
           </Dropdown>
         )}
         <Input
-          type='submit'
-          className='bg-my-bg dark:bg-my-text text-my-text dark:text-my-bg dark:my-outline-dark'
-          value='떠나기'
+          type="submit"
+          className="bg-my-bg dark:bg-my-text text-my-text dark:text-my-bg dark:my-outline-dark"
+          value="떠나기"
         />
       </SearchForm>
     </Wrapper>
