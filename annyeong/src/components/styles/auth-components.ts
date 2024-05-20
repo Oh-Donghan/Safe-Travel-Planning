@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 
 export const Wrapper = styled.div`
-  margin: 0 auto;
-  height: 100%;
+  margin: 100px auto 0;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,16 +35,12 @@ export const Input = styled.input`
   border: none;
   width: 100%;
   font-size: 16px;
-  /* background-color: #FAEBEF; */
-  /* color: #333D79; */
   outline: none;
   &[type='submit'] {
     margin-top: 10px;
-    background-color: #333D79;
-    color: #FAEBEF;
     outline: 2px solid #FAEBEF;
     cursor: pointer;
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
     &:hover {
       background-color: #dda94b;
       color: #333D79;
@@ -65,7 +61,7 @@ export const Error = styled.span`
 
 export const Switcher = styled.span`
   margin-top: 20px;
-  color: #FAEBEF;
+  /* color: #FAEBEF; */
   a {
     color: #dda94b;
     text-decoration: underline;

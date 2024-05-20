@@ -69,7 +69,7 @@ export default function CreateAccount() {
       <Title>Join Annyeong</Title>
       <Form onSubmit={onSubmit}>
         <Label htmlFor='name'>Name</Label>
-        <Input
+        <Input className=' dark:bg-my-bg bg-my-text dark:text-my-text text-my-bg'
           onChange={onChange}
           id='name'
           value={name}
@@ -78,7 +78,7 @@ export default function CreateAccount() {
           required
         />
         <Label htmlFor='name'>Email</Label>
-        <Input
+        <Input className=' dark:bg-my-bg bg-my-text dark:text-my-text text-my-bg'
           onChange={onChange}
           id='email'
           value={email}
@@ -87,7 +87,7 @@ export default function CreateAccount() {
           required
         />
         <Label htmlFor='name'>Password</Label>
-        <Input
+        <Input className=' dark:bg-my-bg bg-my-text dark:text-my-text text-my-bg'
           onChange={onChange}
           id='password'
           value={password}
@@ -95,13 +95,13 @@ export default function CreateAccount() {
           placeholder='Please enter your Password.'
           required
         />
-        <Input
+        <Input className=' bg-my-bg dark:bg-my-text text-my-text dark:text-my-bg dark:my-outline-dark'
           type='submit'
           value={isLoading ? 'Loading...' : 'Create Account'}
         />
       </Form>
       {error !== '' ? <Error>{error}</Error> : null}
-      <Switcher>
+      <Switcher className=' dark:text-my-bg'>
         Already have an account? &nbsp;&nbsp;{' '}
         <Link to='/login'>Log in &rarr;</Link>
       </Switcher>

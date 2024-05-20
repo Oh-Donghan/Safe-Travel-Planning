@@ -67,10 +67,10 @@ export default function Login() {
           type='password'
           required
         />
-        <Input type='submit' value={isLoading ? 'Loading...' : 'Log in'} className=' outline-normal dark:outline-dark' />
+        <Input type='submit' value={isLoading ? 'Loading...' : 'Log in'} className=' bg-my-bg dark:bg-my-text text-my-text dark:text-my-bg dark:my-outline-dark' />
       </Form>
       {error !== '' ? <Error>{error}</Error> : null}
-      <Switcher>
+      <Switcher className=' dark:text-my-bg'>
         Don't have an account? &nbsp;&nbsp;
         <Link to='/create-account'>Create one &rarr;</Link>
       </Switcher>

@@ -34,7 +34,7 @@ export default function SocialButton() {
   }
   
   return (
-    <Button onClick={onClick}>
+    <Button onClick={onClick} className=' dark:bg-my-text dark:my-outline-dark'>
       <img className='h-6' src='/google-logo.svg' />
       Continue with
     </Button>

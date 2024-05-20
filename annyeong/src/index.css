@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .dark .my-outline-dark {
+    outline: 2px solid #333D79;
+  }
+}
+
+:root {
+  --size: 16px;
+}
+
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --size: 14px;
+  }
+}
+@media screen and (max-width: 768px) {
+  :root {
+    --size: 10px;
+  }
+}
+@media screen and (max-width: 475px) {
+  :root {
+    --size: 6px;
+  }
+}

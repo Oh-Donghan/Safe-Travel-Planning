@@ -10,9 +10,14 @@ export default {
         'my-text2': '#dda94b',
       },
       outline: {
-        'normal': ['outline: 2px solid #FAEBEF', '2px'],
-        'dark': ['outline: 2px solid #dda94b', '2px']
-      }
+        custom: ['2px solid #FAEBEF', '2px'], // 커스텀 아웃라인 스타일
+        'custom-dark': ['2px solid #333D79', '2px'],
+      },
+    },
+  },
+  variants: {
+    extent: {
+      outline: ['dark'],
     },
   },
   plugins: [],
