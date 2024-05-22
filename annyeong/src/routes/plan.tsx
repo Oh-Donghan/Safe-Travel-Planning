@@ -3,7 +3,7 @@
 
 import Places from '../components/googlemap/places';
 
-export default function Main() {
+export default function Plan() {
   return (
     // <GMap />
     <Places />

@@ -51,7 +51,7 @@ export default function Home() {
     e.preventDefault();
     if (isValidSelection && inputValue.trim()) {
       const selectedCountry = countries.find(
-        (country) => country.country_nm === inputValue
+        (country: { country_nm: string; }) => country.country_nm === inputValue
       );
       if (selectedCountry) {
         navigate(`/country/${encodeURIComponent(selectedCountry.country_eng_nm.toLowerCase())}`);

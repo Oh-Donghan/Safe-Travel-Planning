@@ -78,12 +78,12 @@ const Map: React.FC = () => {
         <PlacesAutocomplete
           setSelected={setSelected}
           setInfo={setInfo}
-          country={country}
+          country={country!}
         />
       </div>
 
       <GoogleMap
-        zoom={10}
+        zoom={16}
         center={selected || center}
         mapContainerClassName="map-container"
       >
